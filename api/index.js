@@ -25,6 +25,8 @@ app.listen(PORT , () =>{
 app.use("/api/user" , userRouter)
 app.use("/api/auth",authRouter);
 
+
+//middleware for the errors if status code is not there in the error 
 app.use((err,req,res , next) => {
     const statusCode = err.statusCode || 500; //internal server error 
     const message = err.message || 'Internal Server Error';
