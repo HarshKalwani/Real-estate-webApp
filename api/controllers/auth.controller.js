@@ -7,12 +7,12 @@ export const signup = async (req, res , next ) => {
 
     if (!username || !email || !password) {
         return res.status(400).json({
-            success: false,
-            message: "Fill all the details"
+            success:false,
+            message:"Fill all the details"
         })
     }
 
-    const userEmail = await User.findOne({ email });
+    const userEmail = await User.findOne({ email }); 
     if (userEmail) {
         return res.status(400).json({
             success:false,
