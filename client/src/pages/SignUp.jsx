@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link , useNavigate} from 'react-router-dom'
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
+import OAuth from '../components/OAuth';
 
 
 const SignUp = () => {
@@ -73,6 +74,7 @@ const SignUp = () => {
           </span>
         </div>
         <button disabled={loading} className='bg-slate-700 text-white rounded-lg uppercase p-3 hover:opacity-95 disabled:opacity-80'>{loading ? ('Loading') : ('Sign Up')}</button>
+        <OAuth/>
       </form>
       <div className='flex gap-2 mt-5'>
         <p>Have an account?</p>
