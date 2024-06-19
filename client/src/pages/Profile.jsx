@@ -151,18 +151,18 @@ const Profile = () => {
     }
   }
 
-  const handleListingDelete = async (listingId) =>{
+  const handleListingDelete = async (listingId) => {
     try {
-      const res = await fetch(`/api/listing/delete/${listingId}`,{
-        method:'DELETE',
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
+        method: 'DELETE',
       })
       const data = res.json();
-      if(data.success === false){
+      if (data.success === false) {
         console.log(data.message)
         return;
       }
 
-      setUserListings((prev) => prev.filter((listing) =>listing._id !==listingId ))
+      setUserListings((prev) => prev.filter((listing) => listing._id !== listingId))
     } catch (error) {
       console.log(error.message)
     }
@@ -207,23 +207,25 @@ const Profile = () => {
 
       {userListings && userListings.length > 0 &&
         <div className='flex flex-col gap-4'>
-        <h1 className='text-center mt-7 text-2xl font-semibold'>Your Listing</h1>
-      {userListings.map((listing) => (
-          <div className=" flex border rounded-lg p-3 justify-between items-center gap-4" key={listing._id}>
-            <Link to={`/listing/${listing._id}`}>
-              <img src={listing.imageUrls[0]} alt="listing image" className='h-16 w-16 object-contain rounded-lg' />
-            </Link>
-            <Link to={`/listing/${listing._id}`} className="text-slate-700 flex-1 font-semibold hover:underline truncate">
-              <p>{listing.name}</p>
-            </Link>
-            <div className='flex flex-col items-center '>
-              <button onClick={() => handleListingDelete(listing._id)} className='text-red-700 uppercase'>Delete</button>
-              <button className='text-green-700 uppercase'>Edit</button>
-            </div>
-          </div>)
-        )
-      }
-      </div>}
+          <h1 className='text-center mt-7 text-2xl font-semibold'>Your Listing</h1>
+          {userListings.map((listing) => (
+            <div className=" flex border rounded-lg p-3 justify-between items-center gap-4" key={listing._id}>
+              <Link to={`/listing/${listing._id}`}>
+                <img src={listing.imageUrls[0]} alt="listing image" className='h-16 w-16 object-contain rounded-lg' />
+              </Link>
+              <Link to={`/listing/${listing._id}`} className="text-slate-700 flex-1 font-semibold hover:underline truncate">
+                <p>{listing.name}</p>
+              </Link>
+              <div className='flex flex-col items-center '>
+                <button onClick={() => handleListingDelete(listing._id)} className='text-red-700 uppercase'>Delete</button>
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button className='text-green-700 uppercase'>Edit</button>
+                </Link>
+              </div>
+            </div>)
+          )
+          }
+        </div>}
     </div>
   )
 }
