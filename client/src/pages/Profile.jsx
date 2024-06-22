@@ -15,6 +15,7 @@ import {
 import { Link } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 
 
 const Profile = () => {
@@ -99,8 +100,10 @@ const Profile = () => {
       }
       dispatch(updateUserSuccess(data))
       setUpdateSuccess(true);
+      toast.success('User updated successfully')
     } catch (error) {
       dispatch(updateUserFailure(error.message));
+      toast.error('Something went wrong')
     }
   }
 
@@ -116,8 +119,10 @@ const Profile = () => {
         return
       }
       dispatch(deleteUserSuccess(data));
+      toast.success('User deleted successfully')
     } catch (error) {
       dispatch(deleteUserFailure(error.message))
+      toast.error('Something went wrong')
     }
   }
 
@@ -131,8 +136,10 @@ const Profile = () => {
         return;
       }
       dispatch(signOutUserSuccess(data));
+      toast.success('Signed Out')
     } catch (error) {
       dispatch(signOutUserFailure(error.message))
+      toast.error('Something went wrong')
     }
   }
 
@@ -148,6 +155,7 @@ const Profile = () => {
       setUserListings(data);
     } catch (error) {
       setShowListingError(true)
+      toast.error('Something went wrong')
     }
   }
 
@@ -163,8 +171,10 @@ const Profile = () => {
       }
 
       setUserListings((prev) => prev.filter((listing) => listing._id !== listingId))
+      toast.success('Item deleted successfully')
     } catch (error) {
       console.log(error.message)
+      toast.error('Something went wrong')
     }
   }
   return (

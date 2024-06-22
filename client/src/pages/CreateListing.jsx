@@ -3,6 +3,7 @@ import { useRef, useState } from "react"
 import { app } from "../firebase";
 import { useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom'
+import toast from "react-hot-toast";
 
 const CreateListing = () => {
 
@@ -132,10 +133,12 @@ const CreateListing = () => {
       if (data.success === false) {
         setError(data.message);
       }
+      toast.success('List created successfully')
       navigate(`/listing/${data._id}`)
     } catch (error) {
       setError(error.message);
       setLoading(false);
+      toast.error('Something went wrong')
     }
   }
   return (

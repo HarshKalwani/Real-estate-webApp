@@ -3,6 +3,7 @@ import {useEffect, useState } from "react"
 import { app } from "../firebase";
 import { useSelector } from 'react-redux';
 import {useNavigate, useParams} from 'react-router-dom'
+import toast from "react-hot-toast";
 
 const UpdateListing = () => {
 
@@ -150,9 +151,11 @@ const UpdateListing = () => {
         setError(data.message);
       }
       navigate(`/listing/${data._id}`)
+      toast.success('Updated Successfully')
     } catch (error) {
       setError(error.message);
       setLoading(false);
+      toast.error('Something went wrong')
     }
   }
   return (

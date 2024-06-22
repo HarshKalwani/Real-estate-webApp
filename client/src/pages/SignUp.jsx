@@ -3,6 +3,7 @@ import { Link , useNavigate} from 'react-router-dom'
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
 import OAuth from '../components/OAuth';
+import toast from 'react-hot-toast';
 
 
 const SignUp = () => {
@@ -38,15 +39,18 @@ const SignUp = () => {
       if (data.success === false) {
         setLoading(false)
         setError(data.message)
+        toast.error('Something went Wrong')
         return;
       }
       setLoading(false)
       setError(null)
+      toast.success('Account created Successfully')
       navigate('/sign-in ')
       // console.log(data)
     } catch (error) {
       setLoading(false)
       setError(error.message)
+      toast.error('Something went Wrong')
     }
 
   }

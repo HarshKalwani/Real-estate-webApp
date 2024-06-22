@@ -5,6 +5,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import {useDispatch, useSelector} from 'react-redux';
 import { signInStart ,signInSuccess , signInFailure } from '../redux/user/userSlice'; 
 import OAuth from '../components/OAuth';
+import toast from 'react-hot-toast';
 
 
 const Signin = () => {
@@ -41,17 +42,20 @@ const Signin = () => {
       const data = await res.json();
       if (data.success === false) {
         dispatch(signInFailure(data.message))
+        toast.error("Something went wrong")
         return;
       }
       // setLoading(false)
       // setError(null)
       dispatch(signInSuccess(data));
+      toast.success('Logged in');
       navigate('/')
       // console.log(data)
     } catch (error) {
       // setLoading(false)
       // setError(error.message)
       dispatch(signInFailure(error.message));
+      toast.error('Something went wrong')
     }
 
   }
