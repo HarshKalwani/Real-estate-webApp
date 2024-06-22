@@ -93,7 +93,7 @@ const Listing = () => {
                             </p>
                             {
                                 listing.offer && (
-                                    <p className="bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">${listing.regularPrice - listing.discountPrice}</p>
+                                    <p className="bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">${listing.regularPrice - listing.discountPrice} Discount</p>
                                 )
                             }
                         </div>
@@ -135,7 +135,7 @@ const Listing = () => {
                         </ul>
                         
                         {
-                            currentUser && listing.userRef !== currentUser._id && !contact(
+                            currentUser && listing.userRef !== currentUser._id && !contact && (
                                 <button onClick={() => setContact(true)} className='bg-slate-700 text-white rounded-lg uppercase p-3 hover:opacity-95'>Contact Landord</button>
                             )
                         }
