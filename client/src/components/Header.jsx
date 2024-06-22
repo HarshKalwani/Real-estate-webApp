@@ -31,7 +31,7 @@ const Header = () => {
 
                 <Link to="/">
                     <h1 className='font-bold text-sm sm:text-lg flex flex-wrap'>
-                        <span className="text-slate-500">HarshJi</span>
+                        <span className="text-slate-500">SuperBalle</span>
                         <span className="text-slate-700">Estate</span>
                     </h1>
 
